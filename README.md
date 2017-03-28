@@ -2,6 +2,23 @@ VMTVCall
 --------
 使用环信 SDK 开发一款在 TV 上视频通话应用，可以安装在自己的电视上，让爸妈在家和自己进行高清通话
 
+
+### #使用版本
+- AndrodiStudio 2.3.0
+- Gradle 3.3
+- SDK Build Tools 25.0.2
+- SDK Compile 25
+- SDK mini 19
+- Leanback 25.3.0
+- CardView 25.3.0
+- [ButterKnife 8.5.1](https://github.com/JakeWharton/butterknife)
+- [EventBus 3.0.0](https://github.com/greenrobot/EventBus)
+- [环信 SDK 3.3.0](http://www.easemob.com/download/im)
+- [自己封装的工具类库，暂时只能下载源码引用](https://github.com/lzan13/VMLibraryManager)
+
+>需要注意的是，这边并没有将 libs 目录上传到 github，需要大家自己去环信官网下载最新的 sdk 放在 libs 下
+
+
 ### #实现功能
 - 项目首次启动自动注册登录
 - 拨号盘实现
