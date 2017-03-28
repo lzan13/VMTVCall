@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vmloft.develop.app.tv.call">
+
+    <!-- 项目权限配置 -->
+    <!-- 相机 -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- 网络 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- 访问网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 访问WIFI状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 访问精确定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 读取手机状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 写入外部存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--读取外部存储-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 修改音频设置 -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <!--唤醒锁屏，音视频通话所需-->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!--声明不需要触屏-->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false"/>
+    <!--声明 Leanback 支持， required 表示是否只能在使用 Leanback UI 的设备上运行-->
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false"/>
+
+    <application
+        android:name=".VMApplication"
+        android:allowBackup="true"
+        android:banner="@mipmap/icon_banner"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!--正常应用启动界面-->
+        <activity
+            android:name=".VMMainActivity"
+            android:label="@string/app_name"
+            android:logo="@mipmap/app_sample_banner"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden|stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VMVideoCallActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme"
+            />
+        <activity
+            android:name=".VMVoiceCallActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme"
+            />
+        <!--通话界面-->
+
+        <!--通话广播监听-->
+        <receiver
+            android:name=".VMCallReceiver"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
+
+        <!--环信相关配置-->
+        <!-- 设置环信应用的appkey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="lzan13#hxsdkdemo"/>
+    </application>
+</manifest>

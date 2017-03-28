@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.vmloft.develop.app.tv.call"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            // 简单粗暴解决多个库引用 jni 库出现 UnsatisfiedLinkError 文件错误问题
+            ndk {
+                abiFilters = ["armeabi-v7a", "arm64-v8a"]
+            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 文件路径映射配置
+    sourceSets {
+        main {
+            // 设置Jni so文件路径 如果有jniLibs目录就不需要设置
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    // ButterKnife 库
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    // 引用自己封装的工具类库，github：https://github.com/lzan13/VMLibraryManager
+    compile project(':vmtvtools')
+}

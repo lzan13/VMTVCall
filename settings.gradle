@@ -1,0 +1,4 @@
+include ':app'
+
+include ':vmtvtools'
+project(':vmtvtools').projectDir = new File('../VMLibraryManager/vmtvtools')

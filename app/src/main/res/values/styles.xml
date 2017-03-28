@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--TV 应用主题-->
+    <style name="AppTheme" parent="VMTVTheme.Default">
+    </style>
+
+    <!--统一按钮样式-->
+    <style name="VMButton.Dialpad" parent="android:Widget.Button">
+        <!--文字大小-->
+        <item name="android:textSize">@dimen/vm_size_btn_large</item>
+        <!--文字颜色-->
+        <item name="android:textColor">@color/vm_white_100</item>
+        <!--按钮宽度-->
+        <item name="android:layout_width">@dimen/vm_dimen_72</item>
+        <!--按钮高度-->
+        <item name="android:layout_height">@dimen/vm_dimen_72</item>
+        <!--按钮 Margin-->
+        <item name="android:layout_margin">@dimen/vm_margin_small</item>
+        <!--按钮北京-->
+        <item name="android:background">@drawable/btn_shape_blue</item>
+        <!--按钮 Z 轴高度-->
+        <item name="android:elevation">@dimen/vm_elevation_dwarf</item>
+        <!--按钮字体样式-->
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+</resources>
