@@ -17,7 +17,7 @@
         <item name="android:layout_height">@dimen/vm_dimen_72</item>
         <!--按钮 Margin-->
         <item name="android:layout_margin">@dimen/vm_margin_small</item>
-        <!--按钮北京-->
+        <!--按钮背景样式-->
         <item name="android:background">@drawable/btn_shape_blue</item>
         <!--按钮 Z 轴高度-->
         <item name="android:elevation">@dimen/vm_elevation_dwarf</item>

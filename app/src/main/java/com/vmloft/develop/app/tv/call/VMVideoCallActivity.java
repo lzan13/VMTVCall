@@ -339,8 +339,7 @@ public class VMVideoCallActivity extends VMCallActivity {
 
         int width = VMDimenUtil.dp2px(activity, 90);
         int height = VMDimenUtil.dp2px(activity, 120);
-        int rightMargin = VMDimenUtil.dp2px(activity, 16);
-        int topMargin = VMDimenUtil.dp2px(activity, 72);
+        int margin = VMDimenUtil.dp2px(activity, 16);
 
         RelativeLayout.LayoutParams localParams = new RelativeLayout.LayoutParams(width, height);
         RelativeLayout.LayoutParams oppositeParams = new RelativeLayout.LayoutParams(width, height);
@@ -361,9 +360,9 @@ public class VMVideoCallActivity extends VMCallActivity {
         } else if (surfaceViewState == 0) {
             localParams.width = width;
             localParams.height = height;
-            localParams.rightMargin = rightMargin;
-            localParams.topMargin = topMargin;
-            localParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            localParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            localParams.topMargin = margin;
+            localParams.leftMargin = margin;
             oppositeParams.width = RelativeLayout.LayoutParams.MATCH_PARENT;
             oppositeParams.height = RelativeLayout.LayoutParams.MATCH_PARENT;
             // 设置点击事件
@@ -389,9 +388,9 @@ public class VMVideoCallActivity extends VMCallActivity {
             localParams.height = RelativeLayout.LayoutParams.MATCH_PARENT;
             oppositeParams.width = width;
             oppositeParams.height = height;
-            oppositeParams.rightMargin = rightMargin;
-            oppositeParams.topMargin = topMargin;
-            oppositeParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            oppositeParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            oppositeParams.topMargin = margin;
+            oppositeParams.leftMargin = margin;
             // 设置点击事件
             localSurface.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {

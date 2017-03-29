@@ -32,11 +32,9 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
     // ButterKnife 库
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-
     // 引用自己封装的工具类库，github：https://github.com/lzan13/VMLibraryManager
     compile project(':vmtvtools')
 }

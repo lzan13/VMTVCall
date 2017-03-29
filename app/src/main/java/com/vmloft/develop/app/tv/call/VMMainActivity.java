@@ -15,10 +15,11 @@
 package com.vmloft.develop.app.tv.call;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -32,9 +33,15 @@ import butterknife.OnClick;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMError;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMConversation;
 import com.hyphenate.exceptions.HyphenateException;
 import com.vmloft.develop.library.tools.tv.VMBaseTVActivity;
 import com.vmloft.develop.library.tools.tv.utils.VMLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 主界面，直接显示呼叫拨号盘，以及历史呼叫人员
@@ -49,6 +56,8 @@ public class VMMainActivity extends VMBaseTVActivity {
 
     private String localAccount;
     private String remoteAccount;
+
+    private List<EMConversation> conversations;
 
     @BindView(R.id.text_call_local) TextView localView;
     @BindView(R.id.text_call_remote) EditText remoteView;
@@ -65,6 +74,10 @@ public class VMMainActivity extends VMBaseTVActivity {
     @BindView(R.id.btn_delete) ImageButton btnDelete;
     @BindView(R.id.btn_backspace) ImageButton btnBackspace;
     @BindView(R.id.btn_call) Button btnCall;
+
+    private VMConversationAdapter adapter;
+    private GridLayoutManager layoutManager;
+    @BindView(R.id.recycler_view) RecyclerView recyclerView;
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,9 +103,106 @@ public class VMMainActivity extends VMBaseTVActivity {
             VMLog.i("已经登录，可以直接通话了");
             localAccount = EMClient.getInstance().getCurrentUser();
             localView.setText(String.format(getString(R.string.local_account), localAccount));
+            // 加载所有会话到内存
+            EMClient.getInstance().chatManager().loadAllConversations();
+            initConversationList();
         }
     }
 
+    /**
+     * 初始化会话列表
+     */
+    private void initConversationList() {
+        loadConversationList();
+        adapter = new VMConversationAdapter(activity, conversations);
+        layoutManager = new GridLayoutManager(activity, 3);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+        setItemListener();
+    }
+
+    /**
+     * 插入字符
+     */
+    private void inputNumber(String string) {
+        int index = remoteView.getSelectionStart();
+        remoteView.getText().insert(index, string);
+    }
+
+    /**
+     * 删除字符
+     */
+    private void backspaceNumber() {
+        int index = remoteView.getSelectionStart();
+        if (index > 1) {
+            remoteView.getText().delete(index - 1, index);
+        }
+    }
+
+    /**
+     * 视频呼叫
+     */
+    private void makeCallVideo() {
+        remoteAccount = remoteView.getText().toString().trim();
+        if (TextUtils.isEmpty(remoteAccount)) {
+            Toast.makeText(activity, "请输入对方账户", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(VMMainActivity.this, VMVideoCallActivity.class);
+        VMCallManager.getInstance().setChatId(remoteAccount);
+        VMCallManager.getInstance().setInComingCall(false);
+        VMCallManager.getInstance().setCallType(VMCallManager.CallType.VIDEO);
+        startActivity(intent);
+    }
+
+    /**
+     * 刷新 UI 界面
+     */
+    private void refreshUI() {
+        loadConversationList();
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    /**
+     * 加载会话对象到 List 集合，并根据最后一条消息时间进行排序
+     */
+    public void loadConversationList() {
+        Map<String, EMConversation> map =
+                EMClient.getInstance().chatManager().getAllConversations();
+
+        if (conversations == null) {
+            conversations = new ArrayList<>();
+        }
+        conversations.clear();
+
+        synchronized (map) {
+            for (EMConversation temp : map.values()) {
+                conversations.add(temp);
+            }
+        }
+        // 使用Collectons的sort()方法 对会话列表进行排序
+        Collections.sort(conversations, new Comparator<EMConversation>() {
+            @Override public int compare(EMConversation lhs, EMConversation rhs) {
+                //根据会话的最后一条消息时间排序
+                if (lhs.getLastMessage().getMsgTime() > rhs.getLastMessage().getMsgTime()) {
+                    return -1;
+                } else if (lhs.getLastMessage().getMsgTime() < rhs.getLastMessage().getMsgTime()) {
+                    return 1;
+                }
+                return 0;
+            }
+        });
+        VMLog.d("conversation list count: %d", conversations.size());
+    }
+
+    /**
+     * 界面控件点击事件
+     *
+     * @param view 当前点击的控件
+     */
     @OnClick({
             R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4, R.id.btn_5, R.id.btn_6,
             R.id.btn_7, R.id.btn_8, R.id.btn_9, R.id.btn_delete, R.id.btn_backspace, R.id.btn_call
@@ -140,35 +250,37 @@ public class VMMainActivity extends VMBaseTVActivity {
         }
     }
 
-    /**
-     * 插入字符
-     */
-    private void inputNumber(String string) {
-        int index = remoteView.getSelectionStart();
-        remoteView.getText().insert(index, string);
+    @Override protected void onResume() {
+        super.onResume();
+        refreshUI();
     }
 
     /**
-     * 删除字符
+     * 设置 RecyclerView Item 监听回调接口
      */
-    private void backspaceNumber() {
-        int index = remoteView.getSelectionStart();
-        remoteView.getText().delete(index - 1, index);
-    }
+    private void setItemListener() {
+        adapter.setItemListener(new VMConversationAdapter.ItemListener() {
+            /**
+             * RecyclerView item 点击回调
+             *
+             * @param view 当前点击的 view
+             * @param position 当前点击位置
+             */
+            @Override public void onItemClick(View view, int position) {
+                Toast.makeText(activity, "Click " + position, Toast.LENGTH_LONG).show();
+            }
 
-    /**
-     * 视频呼叫
-     */
-    private void makeCallVideo() {
-        remoteAccount = remoteView.getText().toString().trim();
-        if (TextUtils.isEmpty(remoteAccount)) {
-            Toast.makeText(activity, "请输入对方账户", Toast.LENGTH_SHORT).show();
-        }
-        Intent intent = new Intent(VMMainActivity.this, VMVideoCallActivity.class);
-        VMCallManager.getInstance().setChatId(remoteAccount);
-        VMCallManager.getInstance().setInComingCall(false);
-        VMCallManager.getInstance().setCallType(VMCallManager.CallType.VIDEO);
-        startActivity(intent);
+            /**
+             * RecyclerView item 焦点变化回调
+             *
+             * @param view 当前焦点变化的 view
+             * @param hasFocus 当前控件是否获取焦点
+             */
+            @Override public void onItemFocusChange(View view, boolean hasFocus) {
+                View focusView = view.findViewById(R.id.layout_focus);
+                focusView.setFocusable(hasFocus);
+            }
+        });
     }
 
     /**
@@ -212,7 +324,8 @@ public class VMMainActivity extends VMBaseTVActivity {
                     @Override public void run() {
                         dialog.dismiss();
                         localAccount = EMClient.getInstance().getCurrentUser();
-                        localView.setText(String.format(getString(R.string.local_account), localAccount));
+                        localView.setText(
+                                String.format(getString(R.string.local_account), localAccount));
                     }
                 });
             }

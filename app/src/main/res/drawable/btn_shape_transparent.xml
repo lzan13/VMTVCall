@@ -12,13 +12,13 @@
     <item android:state_focused="true">
         <shape>
             <corners android:radius="@dimen/vm_round_radius_normal"/>
-            <solid android:color="@color/vm_green_100"/>
+            <solid android:color="@color/vm_green_87"/>
         </shape>
     </item>
     <item android:state_activated="true">
         <shape android:dither="true"
             android:shape="oval">
-            <solid android:color="@color/vm_green_87"/>
+            <solid android:color="@color/vm_green_100"/>
         </shape>
     </item>
     <item>

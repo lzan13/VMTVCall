@@ -5,6 +5,8 @@ import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.exceptions.EMNoActiveCallException;
 import com.hyphenate.exceptions.EMServiceNotReadyException;
 import com.vmloft.develop.library.tools.tv.utils.VMLog;
@@ -107,28 +109,63 @@ public class VMCallManager {
      */
     public void saveCallMessage() {
         VMLog.d("The call ends and the call log message is saved! " + endType);
+        EMMessage message = null;
+        EMTextMessageBody body = null;
+        String content = null;
+        if (isInComingCall) {
+            message = EMMessage.createReceiveMessage(EMMessage.Type.TXT);
+            message.setFrom(chatId);
+        } else {
+            message = EMMessage.createSendMessage(EMMessage.Type.TXT);
+            message.setTo(chatId);
+        }
         switch (endType) {
             case NORMAL: // 正常结束通话
+                content = String.valueOf(getCallTime());
                 break;
             case CANCEL: // 取消
+                content = context.getString(R.string.call_cancel);
                 break;
             case CANCELLED: // 被取消
+                content = context.getString(R.string.call_cancel_is_incoming);
                 break;
             case BUSY: // 对方忙碌
+                content = context.getString(R.string.call_busy);
                 break;
             case OFFLINE: // 对方不在线
+                content = context.getString(R.string.call_offline);
                 break;
             case REJECT: // 拒绝的
+                content = context.getString(R.string.call_reject_is_incoming);
                 break;
             case REJECTED: // 被拒绝的
+                content = context.getString(R.string.call_reject);
                 break;
             case NORESPONSE: // 未响应
+                content = context.getString(R.string.call_no_response);
                 break;
             case TRANSPORT: // 建立连接失败
+                content = context.getString(R.string.call_connection_fail);
                 break;
             case DIFFERENT: // 通讯协议不同
+                content = context.getString(R.string.call_offline);
+                break;
+            default:
+                // 默认取消
+                content = context.getString(R.string.call_cancel);
                 break;
         }
+        body = new EMTextMessageBody(content);
+        message.addBody(body);
+        message.setStatus(EMMessage.Status.SUCCESS);
+        if (callType == CallType.VIDEO) {
+            message.setAttribute("attr_call_video", true);
+        } else {
+            message.setAttribute("attr_call_voice", true);
+        }
+        message.setUnread(false);
+        // 调用sdk的保存消息方法
+        EMClient.getInstance().chatManager().saveMessage(message);
     }
 
     /**
@@ -182,7 +219,6 @@ public class VMCallManager {
         try {
             // 调用 SDK 的结束通话方法
             EMClient.getInstance().callManager().endCall();
-            stopCallTime();
         } catch (EMNoActiveCallException e) {
             e.printStackTrace();
             VMLog.e("结束通话失败：error %d - %s", e.getErrorCode(), e.getMessage());

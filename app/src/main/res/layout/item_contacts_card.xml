@@ -1,20 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.vmloft.develop.library.tools.tv.widget.VMFocusLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/vm_theme_background"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/vm_margin_large"
+    android:background="@drawable/view_shape_white"
+    android:elevation="@dimen/vm_elevation_high"
+    android:focusable="true"
     android:gravity="center"
-    android:orientation="vertical"
+    android:padding="@dimen/vm_padding_large"
     >
-    <ImageView
-        android:id="@+id/img_avatar"
-        android:layout_width="@dimen/vm_avatar_large"
-        android:layout_height="@dimen/vm_avatar_large"
-        android:src="@mipmap/ic_launcher"
-        />
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/layout_focus"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        />
-</LinearLayout>
+        >
+        <ImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="@dimen/vm_avatar_large"
+            android:layout_height="@dimen/vm_avatar_large"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/ic_launcher"
+            />
+
+        <TextView
+            android:id="@+id/text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/app_name"
+            android:textColor="@color/vm_black_87"
+            android:textSize="@dimen/vm_size_body"
+            android:typeface="sans"
+            android:visibility="gone"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_avatar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/vm_margin_small"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="@string/app_name"
+                android:textColor="@color/vm_black_87"
+                android:textSize="@dimen/vm_size_title"
+                />
+
+            <TextView
+                android:id="@+id/text_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/vm_black_87"
+                android:textSize="@dimen/vm_size_body"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+</com.vmloft.develop.library.tools.tv.widget.VMFocusLayout>
