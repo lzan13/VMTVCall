@@ -33,3 +33,6 @@ VMTVCall
 此项目实现了音视频过界面的最小化，以及视频通话界面本地和远程画面的大小切换等功能
 
 >移动端项目【[移动端实现音视频通话项目](https://github.com/lzan13/VMChatDemoCall)】
+
+### #项目截图
+![Screenshort-main](./screenshorts/Screenshot_2017-3-30-11-36-15.png)

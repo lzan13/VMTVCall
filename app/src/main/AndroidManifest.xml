@@ -50,7 +50,7 @@
             android:logo="@mipmap/app_sample_banner"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize|stateHidden|stateAlwaysHidden">
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -61,11 +61,13 @@
             android:name=".VMVideoCallActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
             />
         <activity
             android:name=".VMVoiceCallActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
             />
         <!--通话界面-->
 

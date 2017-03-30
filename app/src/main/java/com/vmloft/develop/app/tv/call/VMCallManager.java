@@ -121,7 +121,7 @@ public class VMCallManager {
         }
         switch (endType) {
             case NORMAL: // 正常结束通话
-                content = String.valueOf(getCallTime());
+                content = String.format(context.getString(R.string.call_duration_time), getCallTime());
                 break;
             case CANCEL: // 取消
                 content = context.getString(R.string.call_cancel);

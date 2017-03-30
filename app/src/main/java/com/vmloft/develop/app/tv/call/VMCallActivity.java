@@ -11,6 +11,7 @@ import org.greenrobot.eventbus.EventBus;
  * 通话界面的父类，做一些音视频通话的通用操作
  */
 public class VMCallActivity extends VMBaseTVActivity {
+
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 设置通话界面属性，保持屏幕常亮，关闭输入法，以及解锁

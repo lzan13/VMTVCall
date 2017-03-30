@@ -15,7 +15,7 @@
     <string name="call_connected_is_incoming">对方申请与你进行通话</string>
     <string name="call_connection_fail">建立连接失败</string>
     <string name="call_disconnected">通话已结束</string>
-    <string name="call_duration_time">通话时长</string>
+    <string name="call_duration_time">通话时长 %1$d</string>
     <string name="call_no_data">没有通话数据</string>
     <string name="call_not_answer">对方未接听</string>
     <string name="call_no_response">对方可能在忙，建议稍后拨打</string>
