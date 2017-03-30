@@ -36,6 +36,7 @@ VMTVCall
 
 ### #项目截图
 **首界面**
-![首界面](/screenshorts/screenshot-main?raw=true "首界面")
+![首界面](/screenshorts/screenshot-main.png?raw=true "首界面")  
+
 **通话界面**
-![通话界面](/screenshorts/screenshot-call?raw=true "通话界面")
+![通话界面](/screenshorts/screenshot-call.jpg?raw=true "通话界面")
