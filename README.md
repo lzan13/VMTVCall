@@ -35,4 +35,7 @@ VMTVCall
 >移动端项目【[移动端实现音视频通话项目](https://github.com/lzan13/VMChatDemoCall)】
 
 ### #项目截图
-![首界面](/screenshorts/Screenshot_2017-03-30-11-36-15.png?raw=true "首界面")
+**首界面**
+![首界面](/screenshorts/screenshot-main?raw=true "首界面")
+**通话界面**
+![通话界面](/screenshorts/screenshot-call?raw=true "通话界面")
