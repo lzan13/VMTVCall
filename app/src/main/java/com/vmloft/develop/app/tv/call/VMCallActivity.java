@@ -69,14 +69,6 @@ public class VMCallActivity extends VMBaseTVActivity {
         super.onFinish();
     }
 
-    /**
-     * 重载返回键
-     */
-    @Override public void onBackPressed() {
-        // super.onBackPressed();
-
-    }
-
     @Override protected void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
@@ -88,10 +80,11 @@ public class VMCallActivity extends VMBaseTVActivity {
     }
 
     /**
-     *
+     * 拦截返回按键
      */
-    @Override protected void onUserLeaveHint() {
-        super.onUserLeaveHint();
+    @Override public void onBackPressed() {
+        // super.onBackPressed();
+
     }
 
     @Override protected void onResume() {
