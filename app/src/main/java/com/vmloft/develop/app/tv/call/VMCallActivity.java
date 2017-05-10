@@ -2,6 +2,7 @@ package com.vmloft.develop.app.tv.call;
 
 import android.os.Bundle;
 import android.view.WindowManager;
+import com.hyphenate.chat.EMClient;
 import com.vmloft.develop.library.tools.tv.VMBaseTVActivity;
 import org.greenrobot.eventbus.EventBus;
 
@@ -27,17 +28,29 @@ public class VMCallActivity extends VMBaseTVActivity {
     protected void initView() {
         activity = this;
 
+        initCallPushProvider();
+
         if (VMCallManager.getInstance().getCallState() == VMCallManager.CallState.DISCONNECTED) {
             // 收到呼叫或者呼叫对方时初始化通话状态监听
             VMCallManager.getInstance().setCallState(VMCallManager.CallState.CONNECTING);
             VMCallManager.getInstance().registerCallStateListener();
             VMCallManager.getInstance().attemptPlayCallSound();
+
             // 如果不是对方打来的，就主动呼叫
             if (!VMCallManager.getInstance().isInComingCall()) {
                 VMCallManager.getInstance().makeCall();
             }
         }
     }
+
+    /**
+     * 初始化通话推送提供者
+     */
+    private void initCallPushProvider() {
+        VMCallPushProvider pushProvider = new VMCallPushProvider();
+        EMClient.getInstance().callManager().setPushProvider(pushProvider);
+    }
+
 
     /**
      * 挂断通话
