@@ -95,7 +95,7 @@ public class VMCallManager {
          * 设置是否启用外部输入视频数据，默认 false，如果设置为 true，需要自己调用
          * {@link EMCallManager#inputExternalVideoData(byte[], int, int, int)}输入视频数据
          */
-        EMClient.getInstance().callManager().getCallOptions().setEnableExternalVideoData(true);
+        EMClient.getInstance().callManager().getCallOptions().setEnableExternalVideoData(false);
         // 设置自动调节分辨率，默认为 true
         EMClient.getInstance().callManager().getCallOptions().enableFixedVideoResolution(true);
         // 设置视频通话最大和最小比特率，可以不用设置，比特率会根据分辨率进行计算，默认最大(800)， 默认最小(80)
@@ -306,7 +306,6 @@ public class VMCallManager {
         }
     }
 
-
     /**
      * ----------------------------- Sound start -----------------------------
      * 初始化 SoundPool
@@ -319,8 +318,7 @@ public class VMCallManager {
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                     .build();
             // 当系统的 SDK 版本高于21时，使用 build 的方式实例化 SoundPool
-            soundPool =
-                    new SoundPool.Builder().setAudioAttributes(attributes).setMaxStreams(1).build();
+            soundPool = new SoundPool.Builder().setAudioAttributes(attributes).setMaxStreams(1).build();
         } else {
             // 老版本使用构造函数方式实例化 SoundPool，MODE 设置为铃音 MODE_RINGTONE
             soundPool = new SoundPool(1, AudioManager.MODE_RINGTONE, 0);

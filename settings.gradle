@@ -3,3 +3,6 @@ include ':app'
 // 引入自己封装的工具库
 include ':vmtvtools'
 project(':vmtvtools').projectDir = new File('../VMLibraryManager/vmtvtools')
+
+include ':hyphenatechatsdk'
+project(':hyphenatechatsdk').projectDir = new File('../emclient-android/hyphenatechatsdk')
