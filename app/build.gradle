@@ -38,7 +38,4 @@ dependencies {
 
     // 引用自己封装的工具类库，github：https://github.com/lzan13/VMLibraryManager
     compile project(':vmtvtools')
-
-    // 开发中测试引用 sdk 源码，正常开发中需删除，去下载 sdk 的放在 libs 下引用
-    compile project(':hyphenatechatsdk')
 }
