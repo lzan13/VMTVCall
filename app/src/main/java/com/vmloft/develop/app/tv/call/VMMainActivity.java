@@ -100,7 +100,7 @@ public class VMMainActivity extends VMBaseTVActivity {
         if (!EMClient.getInstance().isLoggedInBefore()) {
             signUp();
         } else {
-            VMLog.i("已经登录，可以直接通话了");
+            VMLog.i("已经登录，可以直接通话了 当前账户：%s", EMClient.getInstance().getCurrentUser());
             localAccount = EMClient.getInstance().getCurrentUser();
             localView.setText(String.format(getString(R.string.local_account), localAccount));
             // 加载所有会话到内存
@@ -319,7 +319,7 @@ public class VMMainActivity extends VMBaseTVActivity {
     private void signIn() {
         EMClient.getInstance().login(localAccount, "1", new EMCallBack() {
             @Override public void onSuccess() {
-                VMLog.d("onSuccess 可以通话了 ~");
+                VMLog.i("登录成功，可以通话了 当前账户：%s", EMClient.getInstance().getCurrentUser());
                 runOnUiThread(new Runnable() {
                     @Override public void run() {
                         dialog.dismiss();

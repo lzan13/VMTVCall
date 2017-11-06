@@ -13,6 +13,7 @@ import butterknife.OnClick;
 import com.hyphenate.chat.EMCallManager;
 import com.hyphenate.chat.EMCallStateChangeListener;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMVideoCallHelper;
 import com.hyphenate.exceptions.HyphenateException;
 import com.hyphenate.media.EMCallSurfaceView;
 import com.superrtc.sdk.VideoView;
@@ -29,7 +30,7 @@ import org.greenrobot.eventbus.ThreadMode;
 public class VMVideoCallActivity extends VMCallActivity {
 
     // 视频通话帮助类
-    private EMCallManager.EMVideoCallHelper videoCallHelper;
+    private EMVideoCallHelper videoCallHelper;
     // SurfaceView 控件状态，-1 表示还未接通时，0 表示本小远大，1 表示远小本大
     private int surfaceState = -1;
 
