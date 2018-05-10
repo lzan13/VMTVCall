@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.vmloft.develop.app.tv.call"
@@ -34,9 +34,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     // TV 应用 UI 支持库
-    implementation "com.android.support:leanback-v17:26.1.0"
+    implementation "com.android.support:leanback-v17:27.1.1"
     // 卡片风格扩展库
-    implementation "com.android.support:cardview-v7:26.1.0"
+    implementation "com.android.support:cardview-v7:27.1.1"
 
     // ButterKnife 库
     compile 'com.jakewharton:butterknife:8.8.1'
