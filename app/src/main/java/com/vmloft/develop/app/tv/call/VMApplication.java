@@ -9,7 +9,7 @@ import com.hyphenate.EMError;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
 
-import com.vmloft.develop.library.tools.tv.utils.VMLog;
+import com.vmloft.develop.library.tools.utils.VMLog;
 import java.util.Iterator;
 import java.util.List;
 

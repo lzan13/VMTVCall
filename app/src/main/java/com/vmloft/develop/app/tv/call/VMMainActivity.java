@@ -35,8 +35,8 @@ import com.hyphenate.EMError;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.exceptions.HyphenateException;
-import com.vmloft.develop.library.tools.tv.VMBaseTVActivity;
-import com.vmloft.develop.library.tools.tv.utils.VMLog;
+import com.vmloft.develop.library.tools.VMActivity;
+import com.vmloft.develop.library.tools.utils.VMLog;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -46,7 +46,7 @@ import java.util.Map;
 /**
  * 主界面，直接显示呼叫拨号盘，以及历史呼叫人员
  */
-public class VMMainActivity extends VMBaseTVActivity {
+public class VMMainActivity extends VMActivity {
 
     private String TAG = this.getClass().getSimpleName();
 

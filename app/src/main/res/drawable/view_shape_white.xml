@@ -18,7 +18,7 @@
     <item>
         <shape android:dither="true">
             <corners android:radius="@dimen/vm_dimen_16"/>
-            <solid android:color="@color/vm_white_100"/>
+            <solid android:color="@color/vm_white"/>
         </shape>
     </item>
 </selector>

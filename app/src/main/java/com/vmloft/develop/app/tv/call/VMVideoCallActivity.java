@@ -17,8 +17,8 @@ import com.hyphenate.chat.EMVideoCallHelper;
 import com.hyphenate.exceptions.HyphenateException;
 import com.hyphenate.media.EMCallSurfaceView;
 import com.superrtc.sdk.VideoView;
-import com.vmloft.develop.library.tools.tv.utils.VMDimenUtil;
-import com.vmloft.develop.library.tools.tv.utils.VMLog;
+import com.vmloft.develop.library.tools.utils.VMDimen;
+import com.vmloft.develop.library.tools.utils.VMLog;
 import java.io.File;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -368,10 +368,10 @@ public class VMVideoCallActivity extends VMCallActivity {
         // 更新通话界面控件状态
         surfaceState = 0;
 
-        int width = VMDimenUtil.dp2px(activity, 96);
-        int height = VMDimenUtil.dp2px(activity, 128);
-        int rightMargin = VMDimenUtil.dp2px(activity, 16);
-        int topMargin = VMDimenUtil.dp2px(activity, 96);
+        int width = VMDimen.dp2px( 96);
+        int height = VMDimen.dp2px(128);
+        int rightMargin = VMDimen.dp2px(16);
+        int topMargin = VMDimen.dp2px(96);
 
         localParams = new RelativeLayout.LayoutParams(width, height);
         localParams.width = width;
@@ -511,7 +511,7 @@ public class VMVideoCallActivity extends VMCallActivity {
         super.onConfigurationChanged(newConfig);
     }
 
-    @Override protected void onFinish() {
+    @Override public void onFinish() {
         // 结束通话要把 SurfaceView 释放 重置为 null
         surfaceLayout.removeAllViews();
         localSurface = null;

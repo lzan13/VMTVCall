@@ -5,7 +5,9 @@
 .idea/workspace.xml
 local.properties
 .DS_Store
+.externalNativeBuild
+
 /build
 app/libs
+
 /captures
-.externalNativeBuild

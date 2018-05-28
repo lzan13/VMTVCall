@@ -17,7 +17,7 @@
     <item>
         <shape>
             <corners android:radius="@dimen/vm_round_radius_normal"/>
-            <solid android:color="@color/vm_red_100"/>
+            <solid android:color="@color/vm_red"/>
         </shape>
     </item>
 </selector>

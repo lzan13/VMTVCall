@@ -32,18 +32,18 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     // TV 应用 UI 支持库
     implementation "com.android.support:leanback-v17:27.1.1"
     // 卡片风格扩展库
     implementation "com.android.support:cardview-v7:27.1.1"
 
     // ButterKnife 库
-    compile 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    compile 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
 
-    // 引用自己封装的工具类库，github：https://github.com/lzan13/VMLibraryManager
-    compile project(':vmtvtools')
+    // 引用自己封装的工具类库，GitHub：https://github.com/lzan13/VMLibrary
+    implementation 'com.vmloft.library:vmtools:0.0.2'
 }

@@ -4,17 +4,17 @@ VMTVCall
 
 
 ### #使用版本
-- AndrodiStudio 3.0
-- Gradle 3.3
-- SDK Build Tools 26.0.2
-- SDK Compile 26
+- AndrodiStudio 3.1.2
+- Gradle 4.4
+- SDK Build Tools 27.0.3
+- SDK Compile 27
 - SDK mini 21
-- Leanback 26.1.0
-- CardView 26.1.0
+- Leanback 27.1.1
+- CardView 27.1.1
 - [ButterKnife 8.8.1](https://github.com/JakeWharton/butterknife)
 - [EventBus 3.0.0](https://github.com/greenrobot/EventBus)
-- [环信 SDK 3.3.6](http://www.easemob.com/download/im)
-- [自己封装的工具类库，暂时只能下载源码引用](https://github.com/lzan13/VMLibraryManager)
+- [环信 SDK 3.4.0](http://www.easemob.com/download/im)
+- [vmtools](https://github.com/lzan13/VMLibrary) 自己封装的工具类库
 
 >需要注意的是，这边并没有将 libs 目录上传到 github，需要大家自己去环信官网下载最新的 sdk 放在 libs 下
 

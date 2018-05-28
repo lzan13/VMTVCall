@@ -1,7 +1,7 @@
 package com.vmloft.develop.app.tv.call;
 
 import com.hyphenate.chat.EMCallStateChangeListener;
-import com.vmloft.develop.library.tools.tv.utils.VMLog;
+import com.vmloft.develop.library.tools.utils.VMLog;
 import org.greenrobot.eventbus.EventBus;
 
 /**

@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--TV 应用主题-->
-    <style name="AppTheme" parent="VMTVTheme.Default">
-    </style>
+    <!--&lt;!&ndash;TV 应用主题&ndash;&gt;-->
+    <!--<style name="AppTheme" parent="@style/Theme.Leanback">-->
+    <!--<item name="android:windowEnterTransition">@android:transition/fade</item>-->
+    <!--<item name="android:windowExitTransition">@android:transition/fade</item>-->
+    <!--<item name="android:windowSharedElementExitTransition">@android:transition/move</item>-->
+    <!--<item name="android:windowSharedElementEnterTransition">@android:transition/move</item>-->
+    <!--<item name="android:windowAllowReturnTransitionOverlap">true</item>-->
+    <!--<item name="android:windowAllowEnterTransitionOverlap">true</item>-->
+    <!--<item name="android:windowContentTransitions">true</item>-->
+    <!--<item name="android:colorPrimary">@color/vm_theme_accent</item>-->
+    <!--</style>-->
 
+    <!--&lt;!&ndash;设置 Activity 透明主题&ndash;&gt;-->
+    <!--<style name="AppTheme.Transparent">-->
+    <!--<item name="android:windowIsTranslucent">true</item>-->
+    <!--</style>-->
+    <!--&lt;!&ndash;设置 Activity 半透明主题&ndash;&gt;-->
+    <!--<style name="AppTheme.Translucent">-->
+    <!--<item name="android:windowIsTranslucent">true</item>-->
+    <!--</style>-->
+
+    <!--&lt;!&ndash;默认主题&ndash;&gt;-->
+    <!--<style name="AppTheme.Default">-->
+    <!--</style>-->
+
+    <style name="AppTheme" parent="@style/VMTheme">
+    </style>
+    
     <!--统一按钮样式-->
-    <style name="VMButton.Dialpad" parent="android:Widget.Button">
+    <style name="AppBtn.Dialpad" parent="Widget.Leanback.DetailsActionButtonStyle">
         <!--文字大小-->
         <item name="android:textSize">@dimen/vm_size_btn_large</item>
         <!--文字颜色-->
-        <item name="android:textColor">@color/vm_white_100</item>
+        <item name="android:textColor">@color/vm_white</item>
+        <!--文本对其方式-->
+        <item name="android:textAlignment">center</item>
         <!--按钮宽度-->
         <item name="android:layout_width">@dimen/vm_dimen_72</item>
         <!--按钮高度-->
@@ -20,7 +46,7 @@
         <!--按钮背景样式-->
         <item name="android:background">@drawable/btn_shape_blue</item>
         <!--按钮 Z 轴高度-->
-        <item name="android:elevation">@dimen/vm_elevation_dwarf</item>
+        <item name="android:elevation">@dimen/vm_elevation_low</item>
         <!--按钮字体样式-->
         <item name="android:textStyle">bold</item>
     </style>

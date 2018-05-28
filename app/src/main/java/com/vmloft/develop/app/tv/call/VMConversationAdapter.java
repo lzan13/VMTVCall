@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMTextMessageBody;
-import com.vmloft.develop.library.tools.tv.utils.VMLog;
+import com.vmloft.develop.library.tools.utils.VMLog;
 import java.util.List;
 
 /**

@@ -2,7 +2,7 @@ package com.vmloft.develop.app.tv.call;
 
 import android.hardware.Camera;
 import com.hyphenate.chat.EMCallManager;
-import com.vmloft.develop.library.tools.tv.utils.VMLog;
+import com.vmloft.develop.library.tools.utils.VMLog;
 
 /**
  * Created by lzan13 on 2016/8/9.

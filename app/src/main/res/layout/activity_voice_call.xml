@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/vm_theme_background_light"
+    android:background="@color/vm_theme_background"
     android:clipToPadding="false"
     android:fitsSystemWindows="false"
     >
@@ -167,7 +167,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_margin="24dp"
                     android:background="@drawable/btn_shape_red"
-                    android:elevation="@dimen/vm_elevation_dwarf"
+                    android:elevation="@dimen/vm_elevation_low"
                     android:padding="@dimen/vm_padding_large"
                     android:src="@drawable/ic_call_end_white_36dp"
                     />
@@ -180,7 +180,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_margin="24dp"
                     android:background="@drawable/btn_shape_red"
-                    android:elevation="@dimen/vm_elevation_dwarf"
+                    android:elevation="@dimen/vm_elevation_low"
                     android:padding="@dimen/vm_padding_large"
                     android:src="@drawable/ic_call_end_white_36dp"
                     android:visibility="visible"
@@ -194,7 +194,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_margin="24dp"
                     android:background="@drawable/btn_shape_green"
-                    android:elevation="@dimen/vm_elevation_dwarf"
+                    android:elevation="@dimen/vm_elevation_low"
                     android:padding="@dimen/vm_padding_large"
                     android:src="@drawable/ic_call_white_36dp"
                     />

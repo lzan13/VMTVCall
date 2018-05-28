@@ -10,7 +10,7 @@ import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.exceptions.EMNoActiveCallException;
 import com.hyphenate.exceptions.EMServiceNotReadyException;
-import com.vmloft.develop.library.tools.tv.utils.VMLog;
+import com.vmloft.develop.library.tools.utils.VMLog;
 import java.util.Timer;
 import java.util.TimerTask;
 import org.greenrobot.eventbus.EventBus;

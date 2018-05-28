@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/vm_theme_background_light"
+    android:background="@color/vm_theme_background"
     android:clipChildren="false"
     >
 
@@ -14,7 +14,7 @@
         android:layout_centerVertical="true"
         android:layout_margin="@dimen/vm_margin_large"
         android:clipChildren="false"
-        app:cardBackgroundColor="@color/vm_gray_100"
+        app:cardBackgroundColor="@color/vm_gray"
         app:cardCornerRadius="@dimen/vm_dimen_16"
         app:cardElevation="@dimen/vm_elevation_high"
         app:cardMaxElevation="@dimen/vm_elevation_high"
@@ -60,17 +60,17 @@
                 <Button
                     android:id="@+id/btn_1"
                     android:text="1"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
                 <Button
                     android:id="@+id/btn_2"
                     android:text="2"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
                 <Button
                     android:id="@+id/btn_3"
                     android:text="3"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
             </LinearLayout>
             <LinearLayout
@@ -81,17 +81,17 @@
                 <Button
                     android:id="@+id/btn_4"
                     android:text="4"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
                 <Button
                     android:id="@+id/btn_5"
                     android:text="5"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
                 <Button
                     android:id="@+id/btn_6"
                     android:text="6"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
             </LinearLayout>
             <LinearLayout
@@ -102,17 +102,17 @@
                 <Button
                     android:id="@+id/btn_7"
                     android:text="7"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
                 <Button
                     android:id="@+id/btn_8"
                     android:text="8"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
                 <Button
                     android:id="@+id/btn_9"
                     android:text="9"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
             </LinearLayout>
             <LinearLayout
@@ -125,19 +125,19 @@
                     android:background="@drawable/btn_shape_red"
                     android:src="@drawable/ic_delete_white_24dp"
                     android:text="清空"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
                 <Button
                     android:id="@+id/btn_0"
                     android:text="0"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
                 <ImageButton
                     android:id="@+id/btn_backspace"
                     android:background="@drawable/btn_shape_red"
                     android:src="@drawable/ic_backspace_white_24dp"
                     android:text="删除"
-                    style="@style/VMButton.Dialpad"
+                    style="@style/AppBtn.Dialpad"
                     />
             </LinearLayout>
             <Button
